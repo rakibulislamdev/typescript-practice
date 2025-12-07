@@ -24,7 +24,7 @@ export default function AddTodo() {
 
     return (
         <form onSubmit={handleFormSubmit}>
-            <input className="px-2" type="text" name="todo" placeholder="write Your Todo"
+            <input className="px-2" type="text" name="todo" placeholder="Write your todo.."
                 value={todo}
                 onChange={handleInputAddTodo}
             />

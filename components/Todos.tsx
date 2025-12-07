@@ -1,14 +1,18 @@
 "use client"
 
 import { useTodos } from "@/store/Todos"
+import { useSearchParams } from "next/navigation";
 
 export default function Todos() {
     const { todos, toggleTodoCompleted, handleDeleteTodo } = useTodos()
+    const searchParams = useSearchParams()
+    const todosTab = searchParams.get("todos")
 
-    const filteredTodos = todos;
+    let filteredTodos = todos;
     console.log(filteredTodos)
 
-
+    if (todosTab === "active") filteredTodos = todos.filter(todo => !todo.completed)
+    if (todosTab === "completed") filteredTodos = todos.filter(todo => todo.completed)
 
 
     return (

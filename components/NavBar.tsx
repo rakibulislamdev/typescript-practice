@@ -8,7 +8,6 @@ export default function NavBar() {
 
     const searchParams = useSearchParams()
     const todosTab = searchParams.get("todos")
-    console.log(todosTab)
 
     return (
         <nav className="flex gap-4">

@@ -23,12 +23,12 @@ export default function AddTodo() {
     }
 
     return (
-        <form onSubmit={handleFormSubmit}>
-            <input className="px-2" type="text" name="todo" placeholder="Write your todo.."
+        <form className="flex gap-2" onSubmit={handleFormSubmit}>
+            <input className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors" type="text" name="todo" placeholder="Write your todo.."
                 value={todo}
                 onChange={handleInputAddTodo}
             />
-            <button type="submit">Add</button>
+            <button className="px-4 py-2 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 transition-colors cursor-pointer" type="submit">Add</button>
         </form>
     )
 }

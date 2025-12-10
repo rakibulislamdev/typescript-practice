@@ -1,11 +1,10 @@
-import { Post } from "@/app/actions/getposts";
+"use client"
 import Card from "./Card";
+import { usePostContext } from "@/hooks";
 
-interface CardListsProps {
-    posts: Post[]
-}
+export default function CardLists() {
+    const { posts } = usePostContext()
 
-export default function CardLists({ posts }: CardListsProps) {
     return (
         <div className="grid grid-cols-3 gap-4">
             {

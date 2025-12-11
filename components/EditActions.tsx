@@ -3,6 +3,7 @@
 import { editPost, Post } from "@/app/actions/getposts";
 import { usePostContext } from "@/hooks";
 import React, { useState } from "react";
+import Modal from "./Modal";
 
 
 interface EditActionsProps {
@@ -49,49 +50,39 @@ export default function EditActions({ post }: EditActionsProps) {
 
     return (
         <>
-
             <button
                 onClick={handleEditClick}
                 className="px-4 py-2 bg-amber-300 rounded-sm"
             >
                 Edit
             </button>
+            <Modal
+                title="Edit Post"
+                open={isOpen} onOpenChange={setIsOpen}>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+                    <input type="hidden" name="postId" value={post?.id} />
+                    <input
+                        name="title"
+                        defaultValue={post.title}
+                        className="border p-1"
+                        placeholder="Title"
+                    />
+                    <textarea
+                        name="body"
+                        defaultValue={post.body}
+                        className="border p-1"
+                        placeholder="Body"
+                    />
+                    <button
+                        type="submit"
+                        className="px-4 py-2 bg-amber-300 rounded-sm mt-2"
+                    >
+                        Save
+                    </button>
+                </form>
 
+            </Modal>
 
-            {isOpen && (
-                <div className="fixed inset-0 bg-black/40 flex justify-center items-center w-full h-full z-50">
-                    <div className="bg-white dark:bg-slate-800 p-6 rounded-lg w-full max-w-md relative">
-                        <button
-                            onClick={() => { setIsOpen(false); }}
-                            className="absolute top-2 right-2 text-red-500 font-bold"
-                        >
-                            X
-                        </button>
-
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-                            <input type="hidden" name="postId" value={post?.id} />
-                            <input
-                                name="title"
-                                defaultValue={post.title}
-                                className="border p-1"
-                                placeholder="Title"
-                            />
-                            <textarea
-                                name="body"
-                                defaultValue={post.body}
-                                className="border p-1"
-                                placeholder="Body"
-                            />
-                            <button
-                                type="submit"
-                                className="px-4 py-2 bg-amber-300 rounded-sm mt-2"
-                            >
-                                Save
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            )}
         </>
     )
 }

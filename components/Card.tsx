@@ -12,7 +12,7 @@ export default function Card({ post }: CardProps) {
     return (
 
         <div className="md:min-w-[60%] dark:bg-slate-800 w-full md:max-w-[75%] bg-white boxShadow rounded-xl z-0">
-            <Link href={`posts/${post.id}`}>
+            <Link href={`/posts/${post.id}`} scroll={false}>
                 <div className="p-5">
                     <h1 className="text-[1.3rem] font-bold dark:text-[#abc2d3]">{post.title}</h1>
                     <span
